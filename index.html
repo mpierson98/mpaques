@@ -580,28 +580,28 @@
     <div class="form-row">
       <div class="form-group">
         <label for="nombre">Nombre completo *</label>
-        <input type="text" id="nombre" placeholder="Ej. María López" required />
+        <input type="text" id="nombre" name="nombre" placeholder="Ej. María López" required />
       </div>
       <div class="form-group">
         <label for="negocio">Nombre del negocio *</label>
-        <input type="text" id="negocio" placeholder="Ej. Distribuidora El Campo" required />
+        <input type="text" id="negocio" name="negocio" placeholder="Ej. Distribuidora El Campo" required />
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group">
         <label for="telefono">Teléfono / WhatsApp *</label>
-        <input type="tel" id="telefono" placeholder="Ej. 8888-1234" required />
+        <input type="tel" id="telefono" name="telefono" placeholder="Ej. 8888-1234" required />
       </div>
       <div class="form-group">
         <label for="email">Correo electrónico</label>
-        <input type="email" id="email" placeholder="Ej. maria@correo.com" />
+        <input type="email" id="email" name="email" placeholder="Ej. maria@correo.com" />
       </div>
     </div>
 
     <div class="form-group">
       <label for="tipo">Tipo de negocio *</label>
-      <select id="tipo" required>
+      <select id="tipo" name="tipo" required>
         <option value="" disabled selected>Seleccioná tu tipo de negocio</option>
         <option value="supermercado">Supermercado / minisuper</option>
         <option value="productor">Productor agrícola</option>
@@ -617,20 +617,20 @@
     <div class="form-group">
       <label>Productos de interés (seleccioná los que necesitás)</label>
       <div class="checkbox-group">
-        <label class="checkbox-item"><input type="checkbox" value="stretch_film" /> Film estirado (stretch wrap)</label>
-        <label class="checkbox-item"><input type="checkbox" value="foam_bandejas" /> Bandejas de foam / clamshells</label>
-        <label class="checkbox-item"><input type="checkbox" value="mallas_produce" /> Bolsas y mallas para produce</label>
-        <label class="checkbox-item"><input type="checkbox" value="bolsas_poly" /> Bolsas de polietileno</label>
-        <label class="checkbox-item"><input type="checkbox" value="heat_seal" /> Bolsas heat seal</label>
-        <label class="checkbox-item"><input type="checkbox" value="strapping" /> Strapping y flejes</label>
-        <label class="checkbox-item"><input type="checkbox" value="vasos_platos" /> Vasos y platos desechables</label>
-        <label class="checkbox-item"><input type="checkbox" value="contenedores" /> Contenedores y tarrinas</label>
+        <label class="checkbox-item"><input type="checkbox" name="productos" value="stretch_film" /> Film estirado (stretch wrap)</label>
+        <label class="checkbox-item"><input type="checkbox" name="productos" value="foam_bandejas" /> Bandejas de foam / clamshells</label>
+        <label class="checkbox-item"><input type="checkbox" name="productos" value="mallas_produce" /> Bolsas y mallas para produce</label>
+        <label class="checkbox-item"><input type="checkbox" name="productos" value="bolsas_poly" /> Bolsas de polietileno</label>
+        <label class="checkbox-item"><input type="checkbox" name="productos" value="heat_seal" /> Bolsas heat seal</label>
+        <label class="checkbox-item"><input type="checkbox" name="productos" value="strapping" /> Strapping y flejes</label>
+        <label class="checkbox-item"><input type="checkbox" name="productos" value="vasos_platos" /> Vasos y platos desechables</label>
+        <label class="checkbox-item"><input type="checkbox" name="productos" value="contenedores" /> Contenedores y tarrinas</label>
       </div>
     </div>
 
     <div class="form-group">
       <label for="volumen">Volumen aproximado mensual</label>
-      <select id="volumen">
+      <select id="volumen" name="volumen">
         <option value="" disabled selected>¿Cuánto comprás por mes?</option>
         <option value="pequeno">Pequeño (menos de C$5,000)</option>
         <option value="mediano">Mediano (C$5,000 – C$25,000)</option>
@@ -642,7 +642,7 @@
 
     <div class="form-group">
       <label for="mensaje">¿Algo más que quieras contarnos?</label>
-      <textarea id="mensaje" placeholder="Contanos sobre tus necesidades específicas, frecuencia de pedidos, productos que no encontrás en el mercado, etc."></textarea>
+      <textarea id="mensaje" name="mensaje" placeholder="Contanos sobre tus necesidades específicas, frecuencia de pedidos, productos que no encontrás en el mercado, etc."></textarea>
     </div>
 
     <button type="submit" class="submit-btn">Enviar y recibir cotización →</button>
