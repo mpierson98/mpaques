@@ -650,6 +650,16 @@
       ✅ ¡Gracias! Recibimos tu información y te contactamos en menos de 24 horas.
     </div>
   </form>
+
+  <!-- Admin Panel - access via mpaques.com?admin=mpaques -->
+  <div id="admin-panel" style="display:none; margin-top:3rem; padding:2rem; background:var(--white); border-radius:20px; border:1px solid rgba(92,61,30,0.1);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
+      <h2 style="font-family:'Playfair Display',serif; color:var(--green); font-size:1.6rem;">Leads recibidos</h2>
+      <button onclick="exportCSV()" style="padding:0.5rem 1.2rem; background:var(--green); color:white; border:none; border-radius:8px; cursor:pointer; font-family:'DM Sans',sans-serif; font-weight:600;">Exportar CSV</button>
+    </div>
+    <div id="leads-list"></div>
+  </div>
+
 </section>
 
 <!-- FOOTER -->
@@ -659,11 +669,20 @@
 </footer>
 
 <script>
+  // ── LEAD STORAGE ──
+  function getLeads() {
+    try { return JSON.parse(localStorage.getItem('mpaques_leads') || '[]'); } catch(e) { return []; }
+  }
+  function saveLeads(leads) {
+    localStorage.setItem('mpaques_leads', JSON.stringify(leads));
+  }
+
+  // ── FORM SUBMIT ──
   document.getElementById('lead-form').addEventListener('submit', function(e) {
     e.preventDefault();
-
-    // Collect form data
     const data = {
+      id: Date.now(),
+      fecha: new Date().toLocaleString('es-NI'),
       nombre: document.getElementById('nombre').value,
       negocio: document.getElementById('negocio').value,
       telefono: document.getElementById('telefono').value,
@@ -671,23 +690,63 @@
       tipo: document.getElementById('tipo').value,
       volumen: document.getElementById('volumen').value,
       mensaje: document.getElementById('mensaje').value,
-      productos: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(c => c.value),
-      fecha: new Date().toLocaleString('es-NI')
+      productos: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(c => c.value).join(', ')
     };
+    const leads = getLeads();
+    leads.push(data);
+    saveLeads(leads);
 
-    // Log to console (replace with your backend/email service)
-    console.log('Lead recibido:', data);
-
-    // Show success message
     document.getElementById('success').style.display = 'block';
     this.querySelector('.submit-btn').disabled = true;
     this.querySelector('.submit-btn').textContent = '✅ Enviado';
-
-    // Scroll to success
     document.getElementById('success').scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 
-  // Smooth scroll for nav links
+  // ── ADMIN PANEL ──
+  if (new URLSearchParams(window.location.search).get('admin') === 'mpaques') {
+    document.getElementById('admin-panel').style.display = 'block';
+    renderLeads();
+  }
+
+  function renderLeads() {
+    const leads = getLeads();
+    const container = document.getElementById('leads-list');
+    if (leads.length === 0) {
+      container.innerHTML = '<p style="color:var(--muted)">No hay leads todavía.</p>';
+      return;
+    }
+    container.innerHTML = leads.slice().reverse().map(l => `
+      <div style="border:1px solid var(--warm); border-radius:12px; padding:1.2rem; margin-bottom:1rem;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.6rem; flex-wrap:wrap; gap:0.3rem;">
+          <strong style="color:var(--green); font-size:1rem;">${l.negocio} — ${l.nombre}</strong>
+          <span style="color:var(--muted); font-size:0.8rem;">${l.fecha}</span>
+        </div>
+        <div style="font-size:0.85rem; color:var(--text); display:grid; grid-template-columns:1fr 1fr; gap:0.3rem 1rem;">
+          <span>📱 ${l.telefono}</span>
+          <span>📧 ${l.email || '—'}</span>
+          <span>🏪 ${l.tipo}</span>
+          <span>💰 ${l.volumen}</span>
+          <span style="grid-column:1/-1;">📦 ${l.productos || '—'}</span>
+          ${l.mensaje ? `<span style="grid-column:1/-1;">💬 ${l.mensaje}</span>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function exportCSV() {
+    const leads = getLeads();
+    if (!leads.length) return alert('No hay leads para exportar.');
+    const headers = ['Fecha','Nombre','Negocio','Teléfono','Email','Tipo','Volumen','Productos','Mensaje'];
+    const rows = leads.map(l => [l.fecha,l.nombre,l.negocio,l.telefono,l.email,l.tipo,l.volumen,l.productos,l.mensaje]
+      .map(v => `"${(v||'').replace(/"/g,'""')}"`).join(','));
+    const csv = [headers.join(','), ...rows].join('\n');
+    const a = document.createElement('a');
+    a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+    a.download = 'mpaques_leads.csv';
+    a.click();
+  }
+
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
