@@ -190,9 +190,10 @@
       border-radius: 12px;
       background: var(--sand);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
       flex-shrink: 0;
+      color: var(--green);
     }
+    .stat-card.accent .stat-icon { background: rgba(255,255,255,0.15); color: white; }
     .stat-card h3 { font-size: 1.4rem; font-weight: 700; color: var(--green); line-height: 1; }
     .stat-card p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; font-weight: 400; }
     .stat-card.accent { background: var(--green); }
@@ -270,8 +271,17 @@
       box-shadow: 0 16px 40px rgba(26,74,46,0.1);
       border-color: var(--lime);
     }
-    .product-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
-    .product-card h3 { font-size: 1rem; font-weight: 600; color: var(--green); margin-bottom: 0.4rem; }
+    .product-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--sand);
+      border: 1px solid var(--warm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem;
+      color: var(--green-mid);
+      flex-shrink: 0;
+    }
+    .product-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--green); margin-bottom: 0.4rem; }
     .product-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
 
     /* ── HOW IT WORKS ── */
@@ -443,28 +453,36 @@
   </div>
   <div class="hero-visual">
     <div class="stat-card accent">
-      <div class="stat-icon">🚚</div>
+      <div class="stat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
       <div>
         <h3>Entrega directa</h3>
         <p>A tu negocio o finca en Managua y zonas cercanas</p>
       </div>
     </div>
     <div class="stat-card">
-      <div class="stat-icon">📦</div>
+      <div class="stat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      </div>
       <div>
         <h3>Stock permanente</h3>
         <p>Sin quiebres de inventario. Si lo necesitás, lo tenemos.</p>
       </div>
     </div>
     <div class="stat-card">
-      <div class="stat-icon">🤝</div>
+      <div class="stat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
       <div>
         <h3>Trato directo</h3>
         <p>Sin intermediarios. Hablás con quien te atiende.</p>
       </div>
     </div>
     <div class="stat-card">
-      <div class="stat-icon">💰</div>
+      <div class="stat-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
       <div>
         <h3>Precios competitivos</h3>
         <p>Volumen o pequeñas cantidades, mismo compromiso.</p>
@@ -488,46 +506,47 @@
   <div class="section-title">Productos para tu operación</div>
   <div class="section-sub">Todo lo que necesitás para empacar, presentar y mover tus productos. Especialistas en el sector agrícola y supermercados.</div>
   <div class="products-grid">
+
     <div class="product-card">
-      <span class="product-emoji">🎁</span>
       <h3>Film estirado (stretch film)</h3>
       <p>Para paletizar y asegurar productos. Estándar y reforzado. Ideal para exportación y recepción en supermercados.</p>
     </div>
+
     <div class="product-card">
-      <span class="product-emoji">🥩</span>
       <h3>Bandejas de foam y clamshells</h3>
       <p>Para carnicerías, delicatessen y fruterías dentro de supermercados. Varios tamaños disponibles.</p>
     </div>
+
     <div class="product-card">
-      <span class="product-emoji">🧅</span>
       <h3>Bolsas y mallas para produce</h3>
       <p>Mallas de polipropileno y bolsas poly para cebolla, papa, chiltoma y vegetales. Para productores que venden a supermercados.</p>
     </div>
+
     <div class="product-card">
-      <span class="product-emoji">📦</span>
       <h3>Bolsas de polietileno</h3>
       <p>Alta y baja densidad. Para empacar granos, productos frescos, y uso general en comercios.</p>
     </div>
+
     <div class="product-card">
-      <span class="product-emoji">🏷️</span>
       <h3>Bolsas heat seal para produce</h3>
       <p>Para productores que entregan producto pre-empacado a supermercados. Tendencia creciente en el mercado local.</p>
     </div>
+
     <div class="product-card">
-      <span class="product-emoji">🔗</span>
       <h3>Strapping y flejes</h3>
       <p>Para asegurar cajas y tarimas. Polipropileno y PET. Indispensable en operaciones de exportación y distribución.</p>
     </div>
+
     <div class="product-card">
-      <span class="product-emoji">🥤</span>
       <h3>Vasos y platos desechables</h3>
       <p>Para comedores, eventos y mercados. Vasos desde 3 oz hasta 16 oz, platos y bandejas descartables.</p>
     </div>
+
     <div class="product-card">
-      <span class="product-emoji">🫙</span>
       <h3>Contenedores y tarrinas</h3>
       <p>Para productores de salsas, miel, lácteos artesanales y alimentos empacados que buscan entrar al retail formal.</p>
     </div>
+
   </div>
 </section>
 
@@ -567,9 +586,18 @@
     <h2>Registrá tu negocio y recibí una cotización</h2>
     <p>Completá el formulario y nos ponemos en contacto en menos de 24 horas. Sin costo, sin compromiso. Solo queremos conocer tus necesidades.</p>
     <div class="contact-info">
-      <div class="contact-row"><span>📍</span><span>Managua, Nicaragua</span></div>
-      <div class="contact-row"><span>📦</span><span>Distribución a supermercados y productores agrícolas</span></div>
-      <div class="contact-row"><span>🕐</span><span>Respuesta en menos de 24 horas hábiles</span></div>
+      <div class="contact-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Managua, Nicaragua</span>
+      </div>
+      <div class="contact-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        <span>Distribución a supermercados y productores agrícolas</span>
+      </div>
+      <div class="contact-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Respuesta en menos de 24 horas hábiles</span>
+      </div>
     </div>
   </div>
 
